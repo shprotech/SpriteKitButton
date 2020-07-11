@@ -16,7 +16,7 @@ import SpriteKit
 /**
  A class that represents a button node in SpriteKit.
  */
-class SKButtonNode: SKShapeNode {
+public class SKButtonNode: SKShapeNode {
     private var label: SKLabelNode
     
     /// The label of the button.
@@ -33,7 +33,7 @@ class SKButtonNode: SKShapeNode {
         }
     }
     /// The fill color of the button.
-    override var fillColor: UIColor {
+    public override var fillColor: UIColor {
         get {
             return super.fillColor
         }
@@ -51,7 +51,7 @@ class SKButtonNode: SKShapeNode {
         }
     }
     /// The fill color of the button.
-    override var fillColor: NSColor {
+    public override var fillColor: NSColor {
         get {
             return super.fillColor
         }
@@ -129,22 +129,22 @@ class SKButtonNode: SKShapeNode {
     }
     
     #if !os(macOS)
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    public override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.fillColor = highlightColor
         state = .highlighted
     }
     
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+    public override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.fillColor = enabledColor
         state = .normal
     }
     #else
-    override func touchesBegan(with event: NSEvent?) {
+    public override func touchesBegan(with event: NSEvent?) {
         super.fillColor = highlightColor
         state = .highlighted
     }
     
-    override func touchesEnded(with event: NSEvent?) {
+    public override func touchesEnded(with event: NSEvent?) {
         super.fillColor = enabledColor
         state = .normal
     }
