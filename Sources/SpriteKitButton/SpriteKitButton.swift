@@ -162,6 +162,6 @@ public class SKButtonNode: SKShapeNode {
     }
 }
 
-protocol SKButtonDelegate {
+public protocol SKButtonDelegate {
     func touchedSKButton(button: SKButtonNode)
 }
