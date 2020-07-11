@@ -98,6 +98,8 @@ public class SKButtonNode: SKShapeNode {
     #endif
     /// The state of the button.
     private(set) var state: SKButtonState = .normal
+    /// The delegate of the button.
+    public var delegate: SKButtonDelegate?
     
     /**
     Create a new button node.
@@ -147,6 +149,7 @@ public class SKButtonNode: SKShapeNode {
     public override func touchesEnded(with event: NSEvent?) {
         super.fillColor = enabledColor
         state = .normal
+        delegate?.touchedSKButton(button: self)
     }
     #endif
     
@@ -157,4 +160,8 @@ public class SKButtonNode: SKShapeNode {
     public enum SKButtonState {
         case normal, highlighted, disabled
     }
+}
+
+protocol SKButtonDelegate {
+    func touchedSKButton(button: SKButtonNode)
 }
