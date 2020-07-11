@@ -1,3 +1,3 @@
 # SpriteKitButton
 
-A description of this package.
+SpriteKitButton is a class for a button in SpriteKit scenes.
