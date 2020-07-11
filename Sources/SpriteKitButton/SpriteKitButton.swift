@@ -97,7 +97,7 @@ public class SKButtonNode: SKShapeNode {
     private var enabledColor: NSColor
     #endif
     /// The state of the button.
-    public private(set) var state: SKButtonState = .normal
+    private(set) public var state: SKButtonState = .normal
     /// The action to run on touch.
     private var action: ((SKButtonNode) -> Void)?
     
