@@ -99,7 +99,7 @@ public class SKButtonNode: SKShapeNode {
     /// The state of the button.
     private(set) var state: SKButtonState = .normal
     /// The action to run on touch.
-    public var action: ((SKButtonNode) -> Void)?
+    private var action: ((SKButtonNode) -> Void)?
     
     /**
     Create a new button node.
@@ -141,6 +141,9 @@ public class SKButtonNode: SKShapeNode {
     public override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.fillColor = enabledColor
         state = .normal
+        if let action = action {
+            action(self)
+        }
     }
     #else
     public override func touchesBegan(with event: NSEvent?) {
