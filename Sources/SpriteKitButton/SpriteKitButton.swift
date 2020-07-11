@@ -20,14 +20,14 @@ public class SKButtonNode: SKShapeNode {
     private var label: SKLabelNode
     
     /// The label of the button.
-    var text: String {
+    public var text: String {
         didSet {
             label.text = text
         }
     }
     #if !os(macOS)
     /// The color of the test inside the button.
-    var textColor = UIColor.white {
+    public var textColor = UIColor.white {
         didSet {
             label.fontColor = textColor
         }
@@ -45,7 +45,7 @@ public class SKButtonNode: SKShapeNode {
     }
     #else
     /// The color of the test inside the button.
-    var textColor = NSColor.white {
+    public var textColor = NSColor.white {
         didSet {
             label.fontColor = textColor
         }
@@ -63,13 +63,13 @@ public class SKButtonNode: SKShapeNode {
     }
     #endif
     /// The font size of the button.
-    var fontSize: CGFloat = 20.0 {
+    public var fontSize: CGFloat = 20.0 {
         didSet {
             label.fontSize = fontSize
         }
     }
     /// If set to true: the button won't respond to touches.
-    var disabled: Bool {
+    public var disabled: Bool {
         didSet {
             if disabled {
                 isUserInteractionEnabled = false
@@ -85,15 +85,15 @@ public class SKButtonNode: SKShapeNode {
     
     #if !os(macOS)
     /// The color of the button when highlighted.
-    var highlightColor: UIColor
+    public var highlightColor: UIColor
     /// The color of the button when disabled.
-    var disabledColor: UIColor
+    public var disabledColor: UIColor
     private var enabledColor: UIColor
     #else
     /// The color of the button when highlighted.
-    var highlightColor: NSColor
+    public var highlightColor: NSColor
     /// The color of the button when disabled.
-    var disabledColor: NSColor
+    public var disabledColor: NSColor
     private var enabledColor: NSColor
     #endif
     /// The state of the button.
@@ -154,7 +154,7 @@ public class SKButtonNode: SKShapeNode {
         fatalError("init(coder:) has not been implemented")
     }
     
-    enum SKButtonState {
+    public enum SKButtonState {
         case normal, highlighted, disabled
     }
 }
