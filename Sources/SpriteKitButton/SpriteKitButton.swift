@@ -105,7 +105,7 @@ public class SKButtonNode: SKShapeNode {
      - Parameter test: The test of the button.
      - Parameter cornerRadius: The radius of the corners of the button.
      */
-    init(size: CGSize, text: String, cornerRadius: CGFloat = 0) {
+    public init(size: CGSize, text: String, cornerRadius: CGFloat = 0) {
         self.label = SKLabelNode(text: text)
         self.text = text
         highlightColor = .clear
