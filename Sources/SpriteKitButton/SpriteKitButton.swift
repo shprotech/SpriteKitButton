@@ -98,22 +98,24 @@ public class SKButtonNode: SKShapeNode {
     #endif
     /// The state of the button.
     private(set) var state: SKButtonState = .normal
-    /// The delegate of the button.
-    public var delegate: SKButtonDelegate?
+    /// The action to run on touch.
+    public var action: ((SKButtonNode) -> Void)?
     
     /**
     Create a new button node.
      - Parameter size: The size of the button.
      - Parameter test: The test of the button.
      - Parameter cornerRadius: The radius of the corners of the button.
+     - Parameter action: The function to run on touch event.
      */
-    public init(size: CGSize, text: String, cornerRadius: CGFloat = 0) {
+    public init(size: CGSize, text: String, cornerRadius: CGFloat = 0, action: ((SKButtonNode) -> Void)?) {
         self.label = SKLabelNode(text: text)
         self.text = text
         highlightColor = .clear
         disabledColor = .clear
         enabledColor = .clear
         disabled = false
+        self.action = action
         
         super.init()
         
@@ -149,7 +151,9 @@ public class SKButtonNode: SKShapeNode {
     public override func touchesEnded(with event: NSEvent?) {
         super.fillColor = enabledColor
         state = .normal
-        delegate?.touchedSKButton(button: self)
+        if let action = action {
+            action(self)
+        }
     }
     #endif
     
@@ -160,8 +164,4 @@ public class SKButtonNode: SKShapeNode {
     public enum SKButtonState {
         case normal, highlighted, disabled
     }
-}
-
-public protocol SKButtonDelegate {
-    func touchedSKButton(button: SKButtonNode)
 }
